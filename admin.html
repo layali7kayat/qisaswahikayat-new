@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101113">
+  <meta name="robots" content="noindex,nofollow">
+  <title>لوحة إدارة القصص | قصص وروايات صوتية</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+  <meta name="google-adsense-account" content="ca-pub-8926612269781002">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8926612269781002"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./">
+      <img src="logo.png" alt="شعار قصص وروايات صوتية">
+      <span>قصص وروايات صوتية</span>
+    </a>
+    <a href="./" class="back" aria-label="العودة إلى الموقع">← العودة للموقع</a>
+  </header>
+
+  <main class="admin-wrap">
+    <section id="login" class="panel">
+      <label for="email">البريد الإلكتروني</label>
+      <input id="email" type="email" autocomplete="username" placeholder="البريد الإلكتروني">
+
+      <label for="password">كلمة المرور</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="كلمة المرور">
+
+      <button id="loginBtn" class="primary">تسجيل الدخول</button>
+      <p id="loginMsg" class="error" hidden></p>
+    </section>
+
+    <div id="dashboard" hidden>
+      <div class="panel">
+        <h1>إضافة قصة صوتية</h1>
+        <p class="muted">
+          ارفع ملف MP3 وصورة مربعة بنسبة 1:1، ويمكنك إضافة صورة عريضة بنسبة 16:9 لعرض القصة في القوائم.
+        </p>
+
+        <form id="storyForm">
+          <input id="storyId" type="hidden">
+
+          <label for="title">عنوان القصة</label>
+          <input id="title" required maxlength="180">
+
+          <label for="category">التصنيف</label>
+          <select id="category" required></select>
+
+          <label for="description">وصف القصة</label>
+          <textarea id="description" rows="4" maxlength="5000"></textarea>
+
+          <div class="field-grid">
+            <div>
+              <label for="audio">ملف القصة MP3</label>
+              <input id="audio" type="file" accept=".mp3,audio/mpeg">
+              <small>يفضل أن يكون الملف أقل من 100 ميغابايت.</small>
+            </div>
+
+            <div>
+              <label for="image">الصورة المصغرة المربعة 1:1</label>
+              <input id="image" type="file" accept="image/jpeg,image/png,image/webp">
+              <small>صورة مربعة JPG أو PNG أو WebP.</small>
+            </div>
+
+            <div>
+              <label for="wideImage">الصورة المصغرة العريضة 16:9 (اختيارية)</label>
+              <input id="wideImage" type="file" accept="image/jpeg,image/png,image/webp">
+              <small>تظهر هذه الصورة في قائمة القصص. JPG أو PNG أو WebP.</small>
+              <div id="wideImageCurrent" class="muted" hidden>
+                توجد صورة عريضة محفوظة؛ ارفع صورة جديدة لاستبدالها.
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="primary" id="publish" type="submit">نشر القصة</button>
+            <button type="button" class="secondary" id="cancelEdit" hidden>إلغاء التعديل</button>
+          </div>
+
+          <p id="formMsg" class="muted" role="status"></p>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="section-title">
+          <h2>إدارة التصنيفات</h2>
+          <span class="muted">يمكن تغيير الاسم والصورة</span>
+        </div>
+        <div id="categoryAdmin" class="cat-admin"></div>
+      </div>
+
+      <div class="panel">
+        <div class="section-title">
+          <h2>القصص المنشورة</h2>
+          <button id="logout" class="secondary">تسجيل الخروج</button>
+        </div>
+        <div id="storyAdmin"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
