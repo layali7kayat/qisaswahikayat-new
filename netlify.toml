@@ -1,0 +1,28 @@
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/reset-password"
+  to = "/reset-password.html"
+  status = 200
+
+[[redirects]]
+  from = "/videos"
+  to = "/videos.html"
+  status = 200
+
+[[redirects]]
+  from = "/shorts"
+  to = "/shorts.html"
+  status = 200
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
