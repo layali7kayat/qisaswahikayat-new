@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101113">
+  <meta name="description" content="اكتشف القصص والروايات الصوتية الأكثر استماعًا على موقع قصص وروايات صوتية.">
+  <title>الأكثر استماعًا | قصص وروايات صوتية</title>
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    .top-page {
+      padding: 20px 0 36px;
+    }
+    .top-hero {
+      padding: 24px 18px;
+      margin-bottom: 22px;
+      border: 1px solid var(--line, #353535);
+      border-radius: 18px;
+      background: linear-gradient(135deg, #29251a, #17181b 70%);
+    }
+    .top-hero h1 {
+      margin: 0 0 10px;
+      color: var(--gold, #d5b15c);
+      font-size: clamp(1.4rem, 5vw, 2rem);
+    }
+    .top-hero p {
+      margin: 0;
+      line-height: 1.9;
+      color: var(--text, #eee);
+    }
+    .top-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .top-toolbar h2 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+    .top-toolbar select {
+      max-width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--line, #444);
+      background: #202125;
+      color: var(--text, #eee);
+    }
+    .top-list {
+      display: grid;
+      gap: 12px;
+    }
+    .top-list .story {
+      position: relative;
+      min-width: 0;
+    }
+    .top-rank {
+      position: absolute;
+      z-index: 2;
+      top: 10px;
+      right: 10px;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      color: #171717;
+      background: var(--gold, #d5b15c);
+      font-weight: 800;
+      box-shadow: 0 2px 10px #0005;
+    }
+    .top-status {
+      padding: 24px 14px;
+      text-align: center;
+      line-height: 1.9;
+      color: var(--text, #eee);
+      border: 1px solid var(--line, #353535);
+      border-radius: 14px;
+      background: #191a1d;
+    }
+    .top-status a {
+      color: var(--gold, #d5b15c);
+    }
+    .top-note {
+      margin-top: 18px;
+      font-size: .88rem;
+      line-height: 1.8;
+      color: var(--muted, #aaa);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <img src="/logo.png" alt="شعار قصص وروايات صوتية">
+      <span>قصص وروايات صوتية</span>
+    </a>
+    <button id="menuBtn" class="iconbtn" type="button"
+      aria-label="فتح القائمة" aria-expanded="false">☰</button>
+  </header>
+
+  <aside id="sideMenu" class="side-menu"
+    aria-label="القائمة الجانبية" aria-hidden="true">
+
+    <div class="visitor-account">
+      <div class="visitor-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="7" r="4"/>
+          <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+        </svg>
+      </div>
+      <strong>الأدمن</strong>
+      <a class="visitor-login" href="/login.html">تسجيل الدخول</a>
+    </div>
+
+    <div class="side-head">
+      <h2>القائمة</h2>
+      <button id="closeMenu" class="close-menu"
+        type="button" aria-label="إغلاق القائمة">×</button>
+    </div>
+
+    <nav class="side-links">
+      <a href="/"><span class="nav-icon">⌂</span><span>الرئيسية</span></a>
+      <a href="/search.html" data-library-view="search"><span class="nav-icon">🔍</span><span>البحث عن قصة</span></a>
+      <a href="/most-listened.html"><span class="nav-icon">🔥</span><span>الأكثر استماعًا</span></a>
+      <a href="/history.html" data-library-view="history"><span class="nav-icon">🕘</span><span>سجل المشاهدة</span></a>
+      <a href="/watch-later.html" data-library-view="later"><span class="nav-icon">📌</span><span>المشاهدة لاحقًا</span></a>
+      <a href="/favorites.html" data-library-view="favorites"><span class="nav-icon">❤️</span><span>المفضلة</span></a>
+      <a href="/about.html"><span class="nav-icon">i</span><span>عن الموقع</span></a>
+      <a href="/privacy.html"><span class="nav-icon">⌕</span><span>سياسة الخصوصية</span></a>
+      <a href="/terms.html"><span class="nav-icon">▤</span><span>شروط الاستخدام</span></a>
+      <a href="/cookies.html"><span class="nav-icon">◉</span><span>سياسة ملفات الارتباط</span></a>
+      <a href="/disclaimer.html"><span class="nav-icon">!</span><span>إخلاء المسؤولية</span></a>
+      <a href="/contact.html"><span class="nav-icon">✉</span><span>اتصل بنا</span></a>
+    </nav>
+
+    <div class="side-foot">© قصص وروايات صوتية</div>
+  </aside>
+
+  <div id="menuOverlay" class="menu-overlay" hidden></div>
+
+  <main class="wrap top-page">
+    <section class="top-hero">
+      <h1>🔥 القصص الأكثر استماعًا</h1>
+      <p>
+        اكتشف القصص والروايات الصوتية التي حظيت بأكبر عدد من الاستماعات،
+        واختر حكايتك القادمة من مكتبة قصص وروايات صوتية.
+      </p>
+    </section>
+
+    <div class="top-toolbar">
+      <h2>ترتيب القصص</h2>
+      <label>
+        <span class="muted">الترتيب: </span>
+        <select id="sortOrder" aria-label="ترتيب القصص">
+          <option value="views">الأكثر استماعًا</option>
+          <option value="title">حسب العنوان</option>
+          <option value="newest">الأحدث أولًا</option>
+        </select>
+      </label>
+    </div>
+
+    <section id="topStories" class="top-list" aria-live="polite">
+      <div class="top-status">جارٍ تحميل القصص...</div>
+    </section>
+
+    <p class="top-note">
+      يعتمد ترتيب القصص على بيانات الاستماع التي يوفرها خادم الموقع.
+      قد يتغير الترتيب عند تحديث عدد الاستماعات.
+    </p>
+  </main>
+
+  <footer>
+    <span class="footer-brand">
+      <img src="/logo.png" alt="">
+      قصص وروايات صوتية
+    </span>
+    <div class="footer-links">
+      <a href="/about.html">عن الموقع</a>
+      <a href="/privacy.html">الخصوصية</a>
+      <a href="/terms.html">الشروط</a>
+      <a href="/cookies.html">ملفات الارتباط</a>
+      <a href="/contact.html">اتصل بنا</a>
+    </div>
+  </footer>
+
+  <script src="/config.js"></script>
+
+  <script>
+  (() => {
+    'use strict';
+
+    const API = window.API_BASE ||
+      localStorage.getItem('qisas_api_base') || '';
+
+    const list = document.getElementById('topStories');
+    const sortSelect = document.getElementById('sortOrder');
+    let stories = [];
+
+    function escapeHTML(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      })[ch]);
+    }
+
+    function mediaURL(path) {
+      if (!path) return '';
+      if (/^https?:\/\//i.test(path)) return path;
+      if (!API) return '';
+      return API.replace(/\/+$/, '') +
+        '/media/' + String(path).replace(/^\/+/, '');
+    }
+
+    function render() {
+      const mode = sortSelect.value;
+      const sorted = [...stories];
+
+      if (mode === 'views') {
+        sorted.sort((a, b) =>
+          (Number(b.views) || 0) - (Number(a.views) || 0)
+        );
+      } else if (mode === 'title') {
+        sorted.sort((a, b) =>
+          String(a.title || '').localeCompare(
+            String(b.title || ''), 'ar'
+          )
+        );
+      } else if (mode === 'newest') {
+        sorted.sort((a, b) =>
+          String(b.created_at || b.createdAt || '')
+            .localeCompare(String(a.created_at || a.createdAt || ''))
+        );
+      }
+
+      if (!sorted.length) {
+        list.innerHTML =
+          '<div class="top-status">' +
+          'لا توجد قصص متاحة حاليًا.<br>' +
+          '<a href="/">تصفح مكتبة القصص</a>' +
+          '</div>';
+        return;
+      }
+
+      list.innerHTML = sorted.map((story, index) => {
+        const title = escapeHTML(story.title || 'قصة بدون عنوان');
+        const description = escapeHTML(story.description || '');
+        const image = mediaURL(
+          story.wide_image_path || story.wide_image_url ||
+          story.image_path || story.image_url
+        );
+        const views = (Number(story.views) || 0).toLocaleString('ar');
+
+        return `
+          <article class="story" data-story-id="${escapeHTML(story.id)}"
+            tabindex="0" role="link" aria-label="${title}">
+            <span class="top-rank">${index + 1}</span>
+            ${image
+              ? `<img class="story-cover" src="${escapeHTML(image)}"
+                   alt="${title}" loading="lazy">`
+              : ''}
+            <div class="story-info">
+              <h3>${title}</h3>
+              ${description
+                ? `<p class="story-description">${description}</p>`
+                : ''}
+              <div class="story-meta">
+                <span class="story-brand-name">قصص وروايات صوتية</span>
+                <span class="story-views">${views} مشاهدة</span>
+              </div>
+            </div>
+          </article>`;
+      }).join('');
+
+      list.querySelectorAll('[data-story-id]').forEach(card => {
+        const open = () => {
+          const id = card.dataset.storyId;
+          window.location.href = '/#story=' + encodeURIComponent(id);
+        };
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            open();
+          }
+        });
+      });
+    }
+
+    async function loadStories() {
+      if (!API) {
+        list.innerHTML =
+          '<div class="top-status">' +
+          'لم يتم إعداد رابط الخادم بعد. ' +
+          'تحقق من إعداد API_BASE في config.js.' +
+          '</div>';
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          API.replace(/\/+$/, '') + '/api/catalog'
+        );
+
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+
+        const data = await response.json();
+        stories = Array.isArray(data.stories) ? data.stories : [];
+        render();
+      } catch (error) {
+        list.innerHTML =
+          '<div class="top-status">' +
+          'تعذر تحميل القصص الآن. تحقق من اتصال الخادم ثم أعد المحاولة.' +
+          '<br><button type="button" id="retryLoad">إعادة المحاولة</button>' +
+          '</div>';
+
+        document.getElementById('retryLoad')
+          .addEventListener('click', loadStories);
+      }
+    }
+
+    sortSelect.addEventListener('change', render);
+
+    const menu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('menuOverlay');
+    const menuBtn = document.getElementById('menuBtn');
+
+    function setMenu(open) {
+      menu.classList.toggle('open', open);
+      overlay.hidden = !open;
+      menu.setAttribute('aria-hidden', String(!open));
+      menuBtn.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('menu-open', open);
+    }
+
+    menuBtn.addEventListener('click', () => setMenu(true));
+    document.getElementById('closeMenu')
+      .addEventListener('click', () => setMenu(false));
+    overlay.addEventListener('click', () => setMenu(false));
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') setMenu(false);
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    loadStories();
+  })();
+  </script>
+</body>
+</html>
