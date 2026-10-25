@@ -45,26 +45,18 @@
           <label for="title">عنوان القصة</label>
           <input id="title" required maxlength="180">
 
-          <label for="category">التصنيف</label>
-          <select id="category" required></select>
+          <label for="category">تصنيفات القصة</label>
+          <select id="category" multiple size="5" required aria-describedby="categoryHelp"></select>
+          <small id="categoryHelp">يمكنك اختيار أكثر من تصنيف. على الهاتف اضغطي على كل تصنيف تريدين إضافته.</small>
 
           <label for="description">وصف القصة</label>
           <textarea id="description" rows="4" maxlength="5000"></textarea>
 
+          <label for="totalEpisodes">عدد حلقات القصة</label>
+          <input id="totalEpisodes" type="number" min="1" max="999" step="1" inputmode="numeric" placeholder="مثال: 10" required>
+          <small>اكتبي العدد الإجمالي المخطط للقصة. ستظهر عبارة «الحلقة الأخيرة» عند نشر الحلقة التي تحمل هذا الرقم فقط.</small>
+
           <div class="field-grid">
-            <div>
-              <label for="plannedPartsCount">إجمالي أجزاء القصة (اختياري)</label>
-              <input id="plannedPartsCount" type="number" min="1" max="500" placeholder="مثال: 10">
-              <small>يشمل الجزء الأصلي؛ سيظهر للزائر عدد الأجزاء المنشورة والمتبقية.</small>
-            </div>
-            <div>
-              <label for="storyStatus">حالة القصة</label>
-              <select id="storyStatus">
-                <option value="ongoing">مستمرة — أجزاء قادمة</option>
-                <option value="completed">مكتملة</option>
-                <option value="paused">متوقفة مؤقتًا</option>
-              </select>
-            </div>
             <div>
               <label for="audio">ملف القصة MP3</label>
               <input id="audio" type="file" accept="audio/mpeg,audio/mp3,.mp3" required>
@@ -77,12 +69,6 @@
               <small>صورة مربعة JPG أو PNG أو WebP.</small>
             </div>
 
-            <div>
-              <label for="updateImage">صورة بطاقة آخر التحديثات (عمودية 9:16)</label>
-              <input id="updateImage" type="file" accept="image/jpeg,image/png,image/webp">
-              <small>اختيارية. تُعرض في تبويب «آخر التحديثات». اتركيها فارغة للاحتفاظ بالصورة الحالية عند التعديل.</small>
-              <div id="updateImageCurrent" class="muted" hidden>توجد صورة عمودية محفوظة؛ ارفعي صورة جديدة لاستبدالها.</div>
-            </div>
             <div>
               <label for="wideImage">الصورة المصغرة العريضة 16:9 (اختيارية)</label>
               <input id="wideImage" type="file" accept="image/jpeg,image/png,image/webp">
@@ -170,11 +156,6 @@
           </small>
 
           <div id="partImageCurrent" class="part-image-current" hidden></div>
-
-          <label for="partUpdateImage">صورة بطاقة التحديث للجزء (عمودية 9:16)</label>
-          <input id="partUpdateImage" type="file" accept="image/jpeg,image/png,image/webp">
-          <small>اختيارية. تظهر في «آخر التحديثات» عند نشر الجزء. اتركيها فارغة للاحتفاظ بالصورة الحالية.</small>
-          <div id="partUpdateImageCurrent" class="part-image-current" hidden></div>
 
           <div class="actions">
             <button class="primary" type="submit" id="savePart">حفظ الجزء</button>
