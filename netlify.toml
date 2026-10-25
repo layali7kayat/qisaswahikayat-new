@@ -1,0 +1,51 @@
+[build]
+  publish = "."
+  command = "echo 'Static site: no build required'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
+[[redirects]]
+  from = "/categories"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/categories/"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/category/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/story/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/listen/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/parts/*"
+  to = "/index.html"
+  status = 200
+  force = true
